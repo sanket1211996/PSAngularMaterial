@@ -6,6 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 
 
+const routes: Routes = [
+  { path:'demo', loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)}
+]
+
 @NgModule({
   declarations: [
     AppComponent
