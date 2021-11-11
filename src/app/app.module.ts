@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { Router, RouterModule, Routes } from '@angular/router'
-
+import { RouterModule, Routes } from '@angular/router'
 
 const routes: Routes = [
-  { path:'demo', loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)}
+  { path:'demo', loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)},
+  { path:'contactmanager', loadChildren: () => import('./contact-manager/contact-manager.module').then(m => m.ContactManagerModule)},
+  //Adding default base route to demo module
+  { path:'**', redirectTo:'contactmanager'}
 ]
 
 @NgModule({
