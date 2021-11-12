@@ -1,0 +1,28 @@
+$iconWidth: 56px;
+
+//To hide or view the menu buttoon based on screen size.
+.sidenav-toggle {
+  display: none;
+
+  //To make it fill toolbar size
+  padding: 0;
+  margin: 8px;
+  min-width: $iconWidth;
+
+  @media (max-width: 720px) {
+    display: flex;
+
+    //To beautify
+    align-items: center;
+    justify-content: center;
+  }
+
+  //To beutify and fill the size of toolbar
+  mat-icon {
+    font-size: 30px;
+    height: $iconWidth;
+    width: $iconWidth;
+    line-height: $iconWidth;
+    color: white;
+  }
+}
