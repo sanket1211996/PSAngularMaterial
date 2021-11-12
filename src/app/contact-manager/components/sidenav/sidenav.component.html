@@ -17,6 +17,8 @@
 
   <div class="app-sidenav-content">
     <app-toolbar (toggleSideNav)="drawer.toggle()"></app-toolbar>
+
+    <!-- Adding wrapper to add margin to whole router outlet content -->
     <div class="wrapper">
       <router-outlet></router-outlet>
     </div>
