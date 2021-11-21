@@ -25,12 +25,17 @@ export class UserService {
     return this.http.get<User[]>(userUrl)
       .subscribe( data => {
         this.dataStore.users = data;
+        //Dont return our datastore return just a copy of datastore users
+        // object so that component cannot directly manipulate it.
+        //.next method will update our subcribed component about the availablity of data
+        this._users.next(Object.assign({},this.dataStore).users);
+
       }, error => {
         console.log('error fectching user data.');
       });
   }
 
-  getUsers(): Observable<User[]> {
+  get users(): Observable<User[]> {
     return this._users.asObservable();
   }
 }
