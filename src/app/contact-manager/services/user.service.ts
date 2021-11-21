@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -7,12 +8,15 @@ import { User } from '../models/user';
 })
 export class UserService {
 
+  private _users: BehaviorSubject<User[]>;
+
   private dataStore!: {
     users: User[];
   };
 
   constructor(private http: HttpClient) {
     this.dataStore = { users:[] };
+    this._users =  new BehaviorSubject<User[]>([]); //Empty initilization of behavioural subject.
   }
 
   loadAll() {
