@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -28,5 +28,9 @@ export class UserService {
       }, error => {
         console.log('error fectching user data.');
       });
+  }
+
+  getUsers(): Observable<User[]> {
+    return this._users.asObservable();
   }
 }
