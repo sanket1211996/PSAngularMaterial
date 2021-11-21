@@ -9,6 +9,8 @@ import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path:'', component:ContactManagerAppComponent,
@@ -33,7 +35,11 @@ const routes: Routes = [
     FlexLayoutModule,
     FormsModule,
     // forChild is used for other component routing apart forRoot in app module.
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    HttpClientModule
+  ],
+  providers: [
+    UserService
   ]
 })
 export class ContactManagerModule { }
