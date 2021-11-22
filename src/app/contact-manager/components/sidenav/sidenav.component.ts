@@ -1,6 +1,7 @@
 import { state } from '@angular/animations';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
@@ -18,7 +19,8 @@ export class SidenavComponent implements OnInit {
   public users!: Observable<User[]>;
 
   constructor(private breakpointObserver: BreakpointObserver,
-              private userService: UserService) {}
+              private userService: UserService,
+              private route: Router) {}
 
   ngOnInit(): void {
     this.breakpointObserver
@@ -31,8 +33,11 @@ export class SidenavComponent implements OnInit {
      //subscribe to user service and populate data.
      this.users = this.userService.users;
      this.userService.loadAll();
-     this.users.subscribe(data => {
-       console.log(data);
+     this.users.subscribe(users => {
+       //redirecting to first user when data populates.
+       if(users.length > 0) {
+         this.route.navigate(['/contactmanager/',users[0].id]);
+       }
      })
   }
 

@@ -18,7 +18,13 @@ export class MainContentComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe( params => {
       const id = params['id'];
-      this.user = this.userService.userByid(id);
+
+      //If length not equal to zero populate main content again on refresh
+      this.userService.users.subscribe( users => {
+        if(users.length == 0) return;
+        this.user = this.userService.userByid(id);
+      });
+
     })
   }
 
