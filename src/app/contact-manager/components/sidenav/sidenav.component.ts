@@ -1,6 +1,7 @@
 import { state } from '@angular/animations';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user';
@@ -17,6 +18,8 @@ export class SidenavComponent implements OnInit {
 
   public isScreenSmall: boolean = false;
   public users!: Observable<User[]>;
+  //to access sidenav drawer component to close on select.
+  @ViewChild(MatDrawer) drawer!: MatDrawer;
 
   constructor(private breakpointObserver: BreakpointObserver,
               private userService: UserService,
@@ -37,6 +40,13 @@ export class SidenavComponent implements OnInit {
        //redirecting to first user when data populates.
        if(users.length > 0) {
          this.route.navigate(['/contactmanager/',users[0].id]);
+       }
+     })
+
+     this.route.events.subscribe( ()=> {
+       //todo sidenav close
+       if(this.isScreenSmall) {
+        this.drawer.close();
        }
      })
   }
