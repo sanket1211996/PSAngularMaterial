@@ -38,4 +38,9 @@ export class UserService {
   get users(): Observable<User[]> {
     return this._users.asObservable();
   }
+
+  userByid(id: number) {
+    return this.dataStore.users.find( x => x.id == id);
+  }
+
 }
