@@ -10,7 +10,7 @@
     <mat-nav-list>
       <!-- async pipe is nedded whenever we are dealing with obervable variables. -->
       <mat-list-item *ngFor="let user of users | async">
-         <a matLine href="#"> <mat-icon>{{ user.avatar }}</mat-icon> {{ user.name }}</a>
+         <a matLine href="#"> <mat-icon svgIcon="{{ user.avatar }}" > </mat-icon> {{ user.name }}</a>
 
       </mat-list-item>
     </mat-nav-list>
