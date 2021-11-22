@@ -18,11 +18,16 @@ export class MainContentComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe( params => {
       const id = params['id'];
-
+      this.user = undefined; //to get spinner effect
       //If length not equal to zero populate main content again on refresh
       this.userService.users.subscribe( users => {
         if(users.length == 0) return;
-        this.user = this.userService.userByid(id);
+
+        //Just to see the spinner effect on load.
+        setTimeout( () => {
+          this.user = this.userService.userByid(id);
+        },500);
+
       });
 
     })
