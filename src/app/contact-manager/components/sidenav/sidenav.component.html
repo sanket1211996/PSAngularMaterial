@@ -10,8 +10,11 @@
     <mat-nav-list>
       <!-- async pipe is nedded whenever we are dealing with obervable variables. -->
       <mat-list-item *ngFor="let user of users | async">
-         <a matLine href="#"> <mat-icon svgIcon="{{ user.avatar }}" > </mat-icon> {{ user.name }}</a>
-
+        <!-- Added router link which route to contact manager but with userID -->
+         <a matLine [routerLink]="['/contanctmanager', user.id ]">
+            <mat-icon svgIcon="{{ user.avatar }}" > </mat-icon>
+            {{ user.name }}
+        </a>
       </mat-list-item>
     </mat-nav-list>
 
