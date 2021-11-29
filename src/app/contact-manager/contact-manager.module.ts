@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NotesComponent } from './components/notes/notes.component';
 
 const routes: Routes = [
   { path:'', component:ContactManagerAppComponent,
@@ -29,7 +30,8 @@ const routes: Routes = [
     ContactManagerAppComponent,
     ToolbarComponent,
     SidenavComponent,
-    MainContentComponent
+    MainContentComponent,
+    NotesComponent
   ],
   imports: [
     CommonModule,
