@@ -8,6 +8,19 @@ import { User } from '../models/user';
 })
 export class UserService {
 
+  addUser(user: User) {
+    return new Promise<User>((resolver,reject) => {
+      user.id = this.dataStore.users.length + 1;
+      //Push new user to our local datastore
+      this.dataStore.users.push(user);
+      // Notify all the subscribing componenets about the change
+      this._users.next(Object.assign({},this.dataStore).users);
+      resolver(user);
+      // we can also send reject back if service unable to process data.
+      //reject(user);
+    })
+  }
+
   private _users: BehaviorSubject<User[]>;
 
   private dataStore!: {
