@@ -16,6 +16,7 @@ export class ToolbarComponent implements OnInit {
               private router: Router) { }
 
   @Output() toggleSideNav = new EventEmitter();
+  @Output() toggleTheme = new EventEmitter();
 
   ngOnInit(): void {
   }

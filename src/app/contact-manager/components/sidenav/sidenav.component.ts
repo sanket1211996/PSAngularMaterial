@@ -18,6 +18,7 @@ export class SidenavComponent implements OnInit {
 
   public isScreenSmall: boolean = false;
   public users!: Observable<User[]>;
+  isDarkTheme: boolean = false;
   //to access sidenav drawer component to close on select.
   @ViewChild(MatDrawer) drawer!: MatDrawer;
 
@@ -49,6 +50,10 @@ export class SidenavComponent implements OnInit {
         this.drawer.close();
        }
      })
+  }
+
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
   }
 
 }
