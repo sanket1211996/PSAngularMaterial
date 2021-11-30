@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from '../../models/user';
 
@@ -18,12 +19,18 @@ export class NewContactDialogComponent implements OnInit {
   ];
   user!: User;
 
+  nameFormControl = new FormControl('', [Validators.required]);
+
   ngOnInit(): void {
     this.user = new User();
   }
 
   save(): void {
-    this.dialogRef.close(this.user);
+    if(this.nameFormControl.valid) {
+      this.user.name = this.nameFormControl.value;
+      this.dialogRef.close(this.user);
+    }
+
   }
 
   dismiss(): void {

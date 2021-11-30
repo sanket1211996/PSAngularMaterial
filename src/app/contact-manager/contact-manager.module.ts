@@ -7,7 +7,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 
 import { MaterialModule } from '../shared/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -42,7 +42,8 @@ const routes: Routes = [
     FormsModule,
     // forChild is used for other component routing apart forRoot in app module.
     RouterModule.forChild(routes),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserService
